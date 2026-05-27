@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diaspora Soccer Academy — Six Pillars of Impact</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --green-deep:   #1a3a2a;
+  --green-mid:    #2d6a4f;
+  --green-light:  #52b788;
+  --gold:         #f4a825;
+  --amber:        #e07a1f;
+  --earth:        #8b4513;
+  --cream:        #faf6ee;
+  --ivory:        #f0e8d5;
+  --charcoal:     #1c1c1e;
+  --white:        #ffffff;
+  --shadow:       rgba(26,58,42,0.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  overflow-x: hidden;
+}
+
+/* ─── HERO ─────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--green-deep);
+  overflow: hidden;
+  padding: 80px 24px 60px;
+}
+
+/* Animated savanna silhouette background */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 120% 60% at 50% 110%, #2d6a4f55 0%, transparent 70%),
+    radial-gradient(ellipse 80% 40% at 80% 80%, #f4a82522 0%, transparent 60%),
+    linear-gradient(170deg, #1a3a2a 0%, #0d2318 60%, #1a3a2a 100%);
+  z-index: 0;
+}
+
+/* Paw-print scattered bg */
+.hero::after {
+  content: '🐾';
+  position: absolute;
+  font-size: 280px;
+  opacity: 0.04;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Floating dots */
+.dots {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.dot {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.12;
+  animation: float 8s ease-in-out infinite;
+}
+.dot:nth-child(1) { width: 6px; height: 6px; top: 15%; left: 12%; animation-delay: 0s; }
+.dot:nth-child(2) { width: 10px; height: 10px; top: 30%; left: 88%; animation-delay: 1.5s; }
+.dot:nth-child(3) { width: 4px; height: 4px; top: 70%; left: 8%; animation-delay: 3s; }
+.dot:nth-child(4) { width: 8px; height: 8px; top: 80%; left: 75%; animation-delay: 2s; }
+.dot:nth-child(5) { width: 5px; height: 5px; top: 55%; left: 55%; animation-delay: 4s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+
+.hero-content { position: relative; z-index: 1; max-width: 820px; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(244,168,37,0.15);
+  border: 1px solid rgba(244,168,37,0.35);
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 7px 18px;
+  border-radius: 40px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(52px, 10vw, 110px);
+  line-height: 0.92;
+  color: var(--white);
+  letter-spacing: 1px;
+  animation: fadeUp 0.8s ease 0.1s both;
+}
+
+.hero h1 em {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  color: var(--gold);
+  font-size: 0.72em;
+  letter-spacing: 0;
+}
+
+.hero-sub {
+  margin-top: 22px;
+  font-size: 17px;
+  color: rgba(255,255,255,0.68);
+  font-weight: 300;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 48px;
+  animation: fadeUp 0.8s ease 0.35s both;
+}
+
+.stat {
+  text-align: center;
+}
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 4px;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 50px;
+  background: rgba(255,255,255,0.12);
+  align-self: center;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.35);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: fadeIn 1.5s ease 1s both;
+  z-index: 1;
+}
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+  animation: scrollAnim 2s ease-in-out infinite;
+}
+@keyframes scrollAnim {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50% { opacity: 0.8; transform: scaleY(1.2); }
+}
+
+/* ─── INTRO STRIP ───────────────────────────────────────────── */
+.intro-strip {
+  background: var(--gold);
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  overflow: hidden;
+}
+.intro-strip p {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: var(--green-deep);
+  white-space: nowrap;
+}
+.strip-paw { font-size: 20px; }
+
+/* ─── SECTION STYLES ────────────────────────────────────────── */
+.section {
+  padding: 100px 24px;
+}
+.section-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  color: var(--green-deep);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.section-body {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.8;
+  max-width: 580px;
+}
+
+/* ─── PILLARS GRID ──────────────────────────────────────────── */
+#pillars {
+  background: var(--ivory);
+  padding: 100px 24px;
+}
+
+.pillars-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 72px;
+}
+.pillars-header .section-body {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 28px;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.pillar-card {
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px var(--shadow);
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: cardReveal 0.7s ease forwards;
+  cursor: default;
+}
+
+.pillar-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 16px 48px rgba(26,58,42,0.22);
+}
+
+@keyframes cardReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* stagger */
+.pillar-card:nth-child(1) { animation-delay: 0.05s; }
+.pillar-card:nth-child(2) { animation-delay: 0.15s; }
+.pillar-card:nth-child(3) { animation-delay: 0.25s; }
+.pillar-card:nth-child(4) { animation-delay: 0.35s; }
+.pillar-card:nth-child(5) { animation-delay: 0.45s; }
+.pillar-card:nth-child(6) { animation-delay: 0.55s; }
+
+.card-header {
+  padding: 32px 32px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background: var(--card-color, var(--green-mid));
+  transition: opacity 0.3s;
+}
+.pillar-card:hover .card-header::before { opacity: 0.14; }
+
+.card-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 72px;
+  line-height: 1;
+  color: var(--card-color, var(--green-mid));
+  opacity: 0.18;
+  position: absolute;
+  top: 12px;
+  right: 24px;
+  pointer-events: none;
+}
+
+.card-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: var(--card-color, var(--green-mid));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.card-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.5px;
+  color: var(--green-deep);
+  position: relative;
+  z-index: 1;
+}
+
+.card-body {
+  padding: 0 32px 28px;
+}
+
+.card-desc {
+  font-size: 14.5px;
+  color: #666;
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+.card-achievements {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.achievement {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ach-bullet {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--card-color, var(--green-mid));
+  opacity: 0.15;
+  flex-shrink: 0;
+  margin-top: 1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ach-bullet::after {
+  content: '✓';
+  position: absolute;
+  font-size: 11px;
+  color: var(--card-color, var(--green-mid));
+  opacity: 999;
+  font-weight: 700;
+}
+
+.ach-text {
+  font-size: 13.5px;
+  color: #444;
+  line-height: 1.5;
+}
+
+.card-metric {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--ivory);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metric-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: var(--card-color, var(--green-mid));
+  line-height: 1;
+}
+.metric-label {
+  font-size: 11px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-top: 2px;
+}
+
+.metric-bar-wrap {
+  flex: 1;
+  max-width: 120px;
+  height: 6px;
+  background: var(--ivory);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.metric-bar {
+  height: 100%;
+  border-radius: 4px;
+  background: var(--card-color, var(--green-mid));
+  width: 0;
+  transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.5s;
+}
+
+/* ─── MEDIA / GALLERY ───────────────────────────────────────── */
+#media {
+  padding: 100px 24px;
+  background: var(--green-deep);
+}
+
+#media .section-label { color: var(--gold); }
+#media .section-title { color: var(--white); }
+#media .section-body { color: rgba(255,255,255,0.6); }
+
+.media-header {
+  max-width: 1140px;
+  margin: 0 auto 52px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.media-grid {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 260px 260px;
+  gap: 16px;
+}
+
+.media-item {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  background: var(--green-mid);
+}
+
+.media-item:nth-child(1) { grid-column: 1 / 6; grid-row: 1; }
+.media-item:nth-child(2) { grid-column: 6 / 9; grid-row: 1; }
+.media-item:nth-child(3) { grid-column: 9 / 13; grid-row: 1; }
+.media-item:nth-child(4) { grid-column: 1 / 4; grid-row: 2; }
+.media-item:nth-child(5) { grid-column: 4 / 9; grid-row: 2; }
+.media-item:nth-child(6) { grid-column: 9 / 13; grid-row: 2; }
+
+.media-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75) saturate(1.1);
+  transition: transform 0.6s ease, filter 0.4s ease;
+}
+.media-item:hover img {
+  transform: scale(1.06);
+  filter: brightness(0.9) saturate(1.2);
+}
+
+.media-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26,58,42,0.85) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+}
+.media-item:hover .media-overlay { opacity: 1; }
+
+.media-tag {
+  background: var(--gold);
+  color: var(--green-deep);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+/* Media placeholder boxes */
+.media-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--green-mid) 0%, #1a4a34 100%);
+  color: rgba(255,255,255,0.6);
+  font-size: 13px;
+  text-align: center;
+  padding: 20px;
+}
+.media-placeholder .ph-icon { font-size: 36px; opacity: 0.5; }
+.media-placeholder .ph-label { font-weight: 500; color: rgba(255,255,255,0.8); }
+.media-placeholder .ph-sub { font-size: 11px; opacity: 0.6; }
+
+/* ─── IMPACT TIMELINE ───────────────────────────────────────── */
+#journey {
+  background: var(--cream);
+  padding: 100px 24px;
+}
+
+.journey-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.timeline {
+  position: relative;
+  margin-top: 64px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 32px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--green-light), var(--gold), var(--amber));
+}
+
+.tl-item {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 48px;
+  align-items: flex-start;
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: tlReveal 0.6s ease forwards;
+}
+
+.tl-item:nth-child(1) { animation-delay: 0.1s; }
+.tl-item:nth-child(2) { animation-delay: 0.2s; }
+.tl-item:nth-child(3) { animation-delay: 0.3s; }
+.tl-item:nth-child(4) { animation-delay: 0.4s; }
+.tl-item:nth-child(5) { animation-delay: 0.5s; }
+.tl-item:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes tlReveal {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.tl-dot {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--green-deep);
+  border: 3px solid var(--green-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  color: var(--gold);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.tl-content {
+  flex: 1;
+  padding-top: 12px;
+}
+.tl-year {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--green-mid);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.tl-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  color: var(--green-deep);
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+.tl-body { font-size: 14.5px; color: #666; line-height: 1.7; }
+
+/* ─── SUGGESTIONS / CALL TO ACTION ─────────────────────────── */
+#suggestions {
+  background: var(--green-mid);
+  padding: 100px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+#suggestions::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: rgba(244,168,37,0.08);
+  pointer-events: none;
+}
+
+.suggestions-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.suggestions-inner .section-label { color: var(--gold); }
+.suggestions-inner .section-title { color: var(--white); max-width: 600px; }
+.suggestions-inner .section-body { color: rgba(255,255,255,0.65); margin-bottom: 52px; }
+
+.suggestions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.suggestion-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 32px;
+  transition: background 0.3s, border-color 0.3s, transform 0.3s;
+}
+.suggestion-card:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(244,168,37,0.4);
+  transform: translateY(-4px);
+}
+
+.sug-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+.sug-title {
+  font-family: 'Lora', serif;
+  font-size: 20px;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.sug-body { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
+/* ─── FOOTER / CTA ──────────────────────────────────────────── */
+.footer-cta {
+  background: var(--charcoal);
+  padding: 80px 24px;
+  text-align: center;
+}
+.footer-cta h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.footer-cta h2 em {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  color: var(--gold);
+}
+.footer-cta p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.55);
+  max-width: 480px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary {
+  background: var(--gold);
+  color: var(--green-deep);
+}
+.btn-primary:hover {
+  background: var(--amber);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(244,168,37,0.4);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.3);
+}
+.btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.footer-bar {
+  background: #111;
+  padding: 24px;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.3);
+}
+.footer-bar a { color: var(--gold); text-decoration: none; }
+.footer-bar span { margin: 0 10px; opacity: 0.3; }
+
+/* ─── ANIMATIONS ────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .pillars-grid { grid-template-columns: 1fr; }
+  .media-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .media-item { grid-column: auto !important; grid-row: auto !important; height: 200px; }
+  .hero-stats { gap: 20px; }
+  .stat-divider { display: none; }
+  .media-header { flex-direction: column; }
+  .timeline::before { left: 28px; }
+  .tl-dot { width: 56px; height: 56px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="dots">
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">🐾 Ongata Rongai · Kajiado · Kenya · Est. 2019</div>
+    <h1>Diaspora<br><em>Soccer Academy</em><br>Six Pillars</h1>
+    <p class="hero-sub">Transforming young lives through football, community, and purpose — right at the edge of Nairobi National Park.</p>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">300+</div>
+        <div class="stat-label">Youth Served</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">5–23</div>
+        <div class="stat-label">Ages Served</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Pillars of Impact</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">2019</div>
+        <div class="stat-label">Year Founded</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- ═══ INTRO STRIP ═══════════════════════════════════════════ -->
+<div class="intro-strip">
+  <span class="strip-paw">🐾</span>
+  <p>Football · Education · Environment · Inclusion · Life Skills · Community</p>
+  <span class="strip-paw">🐾</span>
+</div>
+
+<!-- ═══ PILLARS ════════════════════════════════════════════════ -->
+<section id="pillars">
+  <div class="pillars-header">
+    <span class="section-label">Our Impact Framework</span>
+    <h2 class="section-title">Six Pillars of Community Impact</h2>
+    <p class="section-body">Every initiative at The Paws is rooted in one of six transformational pillars. Together they form a holistic model that turns a football pitch into a launchpad for life.</p>
+  </div>
+
+  <div class="pillars-grid">
+
+    <!-- 1 · FOOTBALL EXCELLENCE -->
+    <div class="pillar-card" style="--card-color: #2d6a4f">
+      <div class="card-header">
+        <div class="card-num">01</div>
+        <div class="card-icon">⚽</div>
+        <div class="card-title">Football Excellence</div>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">World-class technical training delivered by dedicated coaches, giving every young athlete — regardless of economic background — the tools to compete at the highest level.</p>
+        <div class="card-achievements">
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Structured training sessions 5 days a week for all age groups</span></div>
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Participation in Kajiado County football leagues and regional tournaments</span></div>
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Talent pathway towards professional clubs and national teams</span></div>
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">KU TV media coverage recognising youth football development</span></div>
+        </div>
+        <div class="card-metric">
+          <div>
+            <div class="metric-value">300+</div>
+            <div class="metric-label">Active Players</div>
+          </div>
+          <div class="metric-bar-wrap"><div class="metric-bar" data-width="90"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 · ACADEMIC SUPPORT -->
+    <div class="pillar-card" style="--card-color: #f4a825">
+      <div class="card-header">
+        <div class="card-num">02</div>
+        <div class="card-icon">📚</div>
+        <div class="card-title">Academic Support</div>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">We believe that the classroom and the pitch are equal arenas. Our academic programme ensures no child must choose between sport and education.</p>
+        <div class="card-achievements">
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Homework support and tutoring sessions integrated into weekly schedule</span></div>
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Scholarship pathways identified and actively pursued for promising athletes</span></div>
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Partnerships with local schools to track academic progress</span></div>
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Reading and numeracy catch-up programmes for younger players</span></div>
+        </div>
+        <div class="card-metric">
+          <div>
+            <div class="metric-value">100%</div>
+            <div class="metric-label">School Enrolment</div>
+          </div>
+          <div class="metric-bar-wrap"><div class="metric-bar" data-width="100"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 · LIFE SKILLS & MENTORSHIP -->
+    <div class="pillar-card" style="--card-color: #e07a1f">
+      <div class="card-header">
+        <div class="card-num">03</div>
+        <div class="card-icon">🧭</div>
+        <div class="card-title">Life Skills & Mentorship</div>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Football teaches discipline, resilience and teamwork. We extend those lessons off the pitch through dedicated workshops, mentorship sessions and leadership circles.</p>
+        <div class="card-achievements">
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Monthly life-skills workshops covering communication, finance and health</span></div>
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Mentorship pairing older players with younger members as role models</span></div>
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Leadership development programme for teen captains and coaches</span></div>
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Mental wellness awareness sessions embedded in training calendar</span></div>
+        </div>
+        <div class="card-metric">
+          <div>
+            <div class="metric-value">12+</div>
+            <div class="metric-label">Workshops / Year</div>
+          </div>
+          <div class="metric-bar-wrap"><div class="metric-bar" data-width="75"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 · ENVIRONMENTAL STEWARDSHIP -->
+    <div class="pillar-card" style="--card-color: #52b788">
+      <div class="card-header">
+        <div class="card-num">04</div>
+        <div class="card-icon">🌿</div>
+        <div class="card-title">Environmental Stewardship</div>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Sitting on the edge of Nairobi National Park, we carry a unique responsibility. We nurture a generation of environmental guardians who respect and protect the wild world around them.</p>
+        <div class="card-achievements">
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Annual tree-planting drives in and around the Kajiado corridor</span></div>
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Awareness programmes on human-wildlife coexistence near Nairobi NP</span></div>
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Zero-waste policy at all training sessions and events</span></div>
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Youth-led community clean-up campaigns in Ongata Rongai</span></div>
+        </div>
+        <div class="card-metric">
+          <div>
+            <div class="metric-value">500+</div>
+            <div class="metric-label">Trees Planted</div>
+          </div>
+          <div class="metric-bar-wrap"><div class="metric-bar" data-width="65"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 · GENDER INCLUSION -->
+    <div class="pillar-card" style="--card-color: #8b4513">
+      <div class="card-header">
+        <div class="card-num">05</div>
+        <div class="card-icon">🤝</div>
+        <div class="card-title">Gender Inclusion</div>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Equal access, equal opportunity. From our founding day, girls and boys have shared the same pitches, the same coaches and the same dreams. No exceptions.</p>
+        <div class="card-achievements">
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Dedicated girls' teams at all age categories, fully resourced and coached</span></div>
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Female coaching appointments championed and prioritised</span></div>
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Anti-harassment and safeguarding policies actively enforced</span></div>
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Girls' participation rates tracked and reported publicly each season</span></div>
+        </div>
+        <div class="card-metric">
+          <div>
+            <div class="metric-value">50/50</div>
+            <div class="metric-label">Boys / Girls</div>
+          </div>
+          <div class="metric-bar-wrap"><div class="metric-bar" data-width="50"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 · COMMUNITY EMPOWERMENT -->
+    <div class="pillar-card" style="--card-color: #c0392b">
+      <div class="card-header">
+        <div class="card-num">06</div>
+        <div class="card-icon">🏘️</div>
+        <div class="card-title">Community Empowerment</div>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">The Paws belongs to Kajiado. We are volunteer-powered, community-owned and determined to show that world-class impact starts at the neighbourhood level.</p>
+        <div class="card-achievements">
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Over 20 trained volunteer coaches and mentors from the local community</span></div>
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Open-door policy — every child from any background is welcome, free of charge</span></div>
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Parent and guardian engagement integrated into the academy calendar</span></div>
+          <div class="achievement"><div class="ach-bullet"></div><span class="ach-text">Partnerships with local health clinics for youth wellness screenings</span></div>
+        </div>
+        <div class="card-metric">
+          <div>
+            <div class="metric-value">20+</div>
+            <div class="metric-label">Volunteers</div>
+          </div>
+          <div class="metric-bar-wrap"><div class="metric-bar" data-width="80"></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.pillars-grid -->
+</section>
+
+<!-- ═══ MEDIA GALLERY ══════════════════════════════════════════ -->
+<section id="media">
+  <div class="media-header">
+    <div>
+      <span class="section-label">Gallery &amp; Coverage</span>
+      <h2 class="section-title">In The Field</h2>
+      <p class="section-body">From training sessions to community events — glimpses of The Paws in action.</p>
+    </div>
+    <a href="https://diasporasocceracademy.com" class="btn btn-outline" target="_blank">Visit Full Site →</a>
+  </div>
+
+  <div class="media-grid">
+    <div class="media-item">
+      <div class="media-placeholder">
+        <div class="ph-icon">⚽</div>
+        <div class="ph-label">Training Session</div>
+        <div class="ph-sub">Ongata Rongai Grounds</div>
+      </div>
+      <div class="media-overlay"><span class="media-tag">Football Development</span></div>
+    </div>
+    <div class="media-item">
+      <div class="media-placeholder">
+        <div class="ph-icon">📖</div>
+        <div class="ph-label">Academic Support</div>
+        <div class="ph-sub">Homework Club Session</div>
+      </div>
+      <div class="media-overlay"><span class="media-tag">Education</span></div>
+    </div>
+    <div class="media-item">
+      <div class="media-placeholder">
+        <div class="ph-icon">🌿</div>
+        <div class="ph-label">Tree Planting Drive</div>
+        <div class="ph-sub">Kajiado Green Campaign</div>
+      </div>
+      <div class="media-overlay"><span class="media-tag">Environment</span></div>
+    </div>
+    <div class="media-item">
+      <div class="media-placeholder">
+        <div class="ph-icon">👧🏾</div>
+        <div class="ph-label">Girls' Team</div>
+        <div class="ph-sub">Full squad in training</div>
+      </div>
+      <div class="media-overlay"><span class="media-tag">Gender Inclusion</span></div>
+    </div>
+    <div class="media-item">
+      <div class="media-placeholder">
+        <div class="ph-icon">📺</div>
+        <div class="ph-label">KU TV Feature</div>
+        <div class="ph-sub">Media Coverage 2024</div>
+      </div>
+      <div class="media-overlay"><span class="media-tag">Media</span></div>
+    </div>
+    <div class="media-item">
+      <div class="media-placeholder">
+        <div class="ph-icon">🏆</div>
+        <div class="ph-label">Tournament Day</div>
+        <div class="ph-sub">County Championship</div>
+      </div>
+      <div class="media-overlay"><span class="media-tag">Competition</span></div>
+    </div>
+  </div>
+
+  <p style="text-align:center; margin-top:32px; font-size:13px; color:rgba(255,255,255,0.35);">
+    Replace placeholder boxes with real photos at <code style="color:var(--gold)">diasporasocceracademy.com/gallery</code>
+  </p>
+</section>
+
+<!-- ═══ IMPACT TIMELINE ════════════════════════════════════════ -->
+<section id="journey" class="section">
+  <div class="journey-inner">
+    <span class="section-label">Our Journey</span>
+    <h2 class="section-title">From 2019 to Today</h2>
+    <p class="section-body">Every step forward has been driven by community, passion, and the belief that football can change lives.</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">2019</div>
+        <div class="tl-content">
+          <div class="tl-year">Foundation Year</div>
+          <div class="tl-heading">The Paws Are Born</div>
+          <p class="tl-body">Diaspora Soccer Academy is established in Ongata Rongai by passionate community members. Named after the wildlife of Nairobi National Park, the academy opens its doors to its first cohort of young players.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">2020</div>
+        <div class="tl-content">
+          <div class="tl-year">Growth Under Adversity</div>
+          <div class="tl-heading">Community Holds Strong</div>
+          <p class="tl-body">Despite global challenges, volunteer coaches keep the programme alive. Life skills workshops and academic support sessions are launched to help youth through uncertain times.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">2021</div>
+        <div class="tl-content">
+          <div class="tl-year">Formal Structure</div>
+          <div class="tl-heading">Official Registration &amp; Six Pillars Defined</div>
+          <p class="tl-body">The academy formalises its structure, with the six community pillars established as its operational framework. Girls' teams are launched across all age groups. Over 150 youth enrolled.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">2022</div>
+        <div class="tl-content">
+          <div class="tl-year">Environmental Action</div>
+          <div class="tl-heading">Green Programme Launched</div>
+          <p class="tl-body">The environmental stewardship pillar goes active with tree-planting drives and clean-up campaigns around Kajiado County. Nairobi National Park partners consulted for habitat awareness education.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">2023</div>
+        <div class="tl-content">
+          <div class="tl-year">Media Recognition</div>
+          <div class="tl-heading">KU TV Spotlight</div>
+          <p class="tl-body">Kenya's KU TV features Diaspora Soccer Academy, bringing national recognition to The Paws' story. Player count surpasses 250. First scholarship pathway confirmed for a senior player.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">NOW</div>
+        <div class="tl-content">
+          <div class="tl-year">Present Day</div>
+          <div class="tl-heading">300+ Youth, Six Pillars, One Community</div>
+          <p class="tl-body">The Paws serve over 300 young people aged 5–23 across Kajiado. All six pillars are fully active. The academy actively seeks partners, sponsors and donors to scale its impact across Kenya.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SUGGESTIONS ═══════════════════════════════════════════ -->
+<section id="suggestions">
+  <div class="suggestions-inner">
+    <span class="section-label">Opportunities Ahead</span>
+    <h2 class="section-title">Recommended Next Steps</h2>
+    <p class="section-body">Strategic additions that could amplify the academy's six-pillar impact and build long-term sustainability.</p>
+
+    <div class="suggestions-grid">
+      <div class="suggestion-card">
+        <div class="sug-icon">🤝</div>
+        <div class="sug-title">Corporate Partnerships</div>
+        <p class="sug-body">Formalise a CSR partnership programme with Nairobi-based companies. Offer branded kit, pitch signage and impact reports in exchange for funding — a win for sponsors and The Paws.</p>
+      </div>
+      <div class="suggestion-card">
+        <div class="sug-icon">📱</div>
+        <div class="sug-title">Digital Storytelling Hub</div>
+        <p class="sug-body">Create a dedicated social media content calendar documenting each pillar monthly. Player spotlights, coach interviews and environmental updates build donor confidence and community pride.</p>
+      </div>
+      <div class="suggestion-card">
+        <div class="sug-icon">🎓</div>
+        <div class="sug-title">Scholarship Fund</div>
+        <p class="sug-body">Launch a named scholarship fund — "The Paws Scholarship" — targeting university entry for graduating athletes. Even one success story per year redefines community aspirations.</p>
+      </div>
+      <div class="suggestion-card">
+        <div class="sug-icon">🌍</div>
+        <div class="sug-title">Diaspora Engagement Network</div>
+        <p class="sug-body">Tap the Kenyan diaspora globally for mentors, fundraising and professional connections. A diaspora ambassador programme would deepen the academy's identity and resource base.</p>
+      </div>
+      <div class="suggestion-card">
+        <div class="sug-icon">📊</div>
+        <div class="sug-title">Annual Impact Report</div>
+        <p class="sug-body">Publish a professional annual report mapping progress across all six pillars with data, stories and photography. This signals accountability and professionalism to donors and grant bodies.</p>
+      </div>
+      <div class="suggestion-card">
+        <div class="sug-icon">🏟️</div>
+        <div class="sug-title">Permanent Training Ground</div>
+        <p class="sug-body">Explore land acquisition or long-term lease to secure a permanent, branded home ground. A fixed address dramatically increases institutional credibility and creates a community anchor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER CTA ══════════════════════════════════════════════ -->
+<div class="footer-cta">
+  <h2>Help Us Give<br><em>Every Child A Chance</em></h2>
+  <p>The Paws are running on passion and volunteer power. Your support — financial or otherwise — directly feeds the six pillars and changes young lives in Kajiado.</p>
+  <div class="cta-buttons">
+    <a href="https://diasporasocceracademy.com/#donate" class="btn btn-primary" target="_blank">Donate Now</a>
+    <a href="https://diasporasocceracademy.com" class="btn btn-outline" target="_blank">Visit Our Website</a>
+  </div>
+</div>
+
+<div class="footer-bar">
+  🐾 <strong style="color:rgba(255,255,255,0.55)">Diaspora Soccer Academy — The Paws</strong>
+  <span>|</span>
+  Ongata Rongai, Kajiado County, Kenya
+  <span>|</span>
+  <a href="https://diasporasocceracademy.com" target="_blank">diasporasocceracademy.com</a>
+  <span>|</span>
+  Built with 💚 to inspire impact
+</div>
+
+<!-- ═══ JS: metric bars on scroll ══════════════════════════════ -->
+<script>
+  // Animate metric bars when in view
+  const bars = document.querySelectorAll('.metric-bar');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const w = e.target.getAttribute('data-width');
+        e.target.style.width = w + '%';
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  bars.forEach(b => observer.observe(b));
+
+  // Parallax hero paw
+  document.addEventListener('scroll', () => {
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      const scrolled = window.scrollY;
+      hero.style.backgroundPositionY = scrolled * 0.4 + 'px';
+    }
+  });
+</script>
+</body>
+</html>
