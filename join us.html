@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diaspora Soccer Academy — The Paws 🐾 | Partner With Us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+  <text y='0.9em' font-size='90'>🐾</text>
+</svg>">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #080b10;
+    --surface: #10151e;
+    --surface2: #181f2c;
+    --border: rgba(255,255,255,0.08);
+    --text: #f0f2f5;
+    --muted: #7a8499;
+    --player: #2ecc71;
+    --player-dim: rgba(46,204,113,0.12);
+    --donor: #f0a500;
+    --donor-dim: rgba(240,165,0,0.12);
+    --fan: #e8445a;
+    --fan-dim: rgba(232,68,90,0.12);
+    --input-bg: #0f1520;
+    --input-border: rgba(255,255,255,0.1);
+    --radius: 14px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── BACKGROUND TEXTURE ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(46,204,113,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 80%, rgba(232,68,90,0.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page { position: relative; z-index: 1; }
+
+  /* ─── HEADER ─── */
+  header {
+    padding: 2.5rem 2rem 0;
+    text-align: center;
+  }
+
+  .logo-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3rem;
+  }
+
+  .logo-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--player);
+  }
+
+  /* ─── HERO TEXT ─── */
+  .hero {
+    text-align: center;
+    padding: 0 1.5rem 3.5rem;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(4rem, 12vw, 7.5rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 span { color: var(--player); }
+
+  .hero p {
+    font-size: 1.05rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  /* ─── CATEGORY CARDS ─── */
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem 5rem;
+  }
+
+  .cat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2.2rem 1.8rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  }
+
+  .cat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .cat-card.player::before { background: var(--player-dim); }
+  .cat-card.donor::before  { background: var(--donor-dim); }
+  .cat-card.fan::before    { background: var(--fan-dim); }
+
+  .cat-card:hover { transform: translateY(-4px); }
+  .cat-card:hover::before { opacity: 1; }
+  .cat-card.player:hover { border-color: rgba(46,204,113,0.4); }
+  .cat-card.donor:hover  { border-color: rgba(240,165,0,0.4); }
+  .cat-card.fan:hover    { border-color: rgba(232,68,90,0.4); }
+
+  .cat-icon {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .player .cat-icon { background: var(--player-dim); }
+  .donor .cat-icon  { background: var(--donor-dim); }
+  .fan .cat-icon    { background: var(--fan-dim); }
+
+  .cat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+  }
+
+  .player .cat-label { color: var(--player); }
+  .donor .cat-label  { color: var(--donor); }
+  .fan .cat-label    { color: var(--fan); }
+
+  .cat-desc {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .cat-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .player .cat-arrow { color: var(--player); }
+  .donor .cat-arrow  { color: var(--donor); }
+  .fan .cat-arrow    { color: var(--fan); }
+
+  /* ─── FORM OVERLAY ─── */
+  .form-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(8,11,16,0.85);
+    z-index: 100;
+    overflow-y: auto;
+    padding: 2rem 1rem;
+    backdrop-filter: blur(6px);
+    animation: fadeIn 0.25s ease;
+  }
+
+  .form-overlay.active { display: block; }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+  .form-card {
+    background: var(--surface);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 2.8rem 2.5rem;
+    animation: slideUp 0.35s ease;
+    position: relative;
+  }
+
+  .form-close {
+    position: absolute;
+    top: 1.4rem;
+    right: 1.4rem;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .form-close:hover { background: var(--border); color: var(--text); }
+
+  .form-header { margin-bottom: 2rem; }
+
+  .form-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+  }
+
+  .badge-player { background: var(--player-dim); color: var(--player); }
+  .badge-donor  { background: var(--donor-dim);  color: var(--donor); }
+  .badge-fan    { background: var(--fan-dim);    color: var(--fan); }
+
+  .form-header h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .form-header p {
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  /* ─── FORM FIELDS ─── */
+  .field-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .field-grid.full { grid-template-columns: 1fr; }
+
+  @media (max-width: 520px) {
+    .field-grid { grid-template-columns: 1fr; }
+    .form-card { padding: 2rem 1.4rem; }
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .field.span2 { grid-column: span 2; }
+  @media (max-width: 520px) { .field.span2 { grid-column: span 1; } }
+
+  label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  input, select, textarea {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 10px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+
+  input::placeholder, textarea::placeholder { color: var(--muted); opacity: 0.5; }
+
+  input:focus, select:focus, textarea:focus { border-color: rgba(255,255,255,0.3); }
+
+  select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a8499' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 2.5rem; }
+
+  textarea { resize: vertical; min-height: 90px; }
+
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 1.6rem 0 1.4rem;
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  /* accent the focused input border by type */
+  .form-player input:focus, .form-player select:focus, .form-player textarea:focus { border-color: rgba(46,204,113,0.5); }
+  .form-donor  input:focus, .form-donor  select:focus, .form-donor  textarea:focus { border-color: rgba(240,165,0,0.5); }
+  .form-fan    input:focus, .form-fan    select:focus, .form-fan    textarea:focus { border-color: rgba(232,68,90,0.5); }
+
+  /* ─── SUBMIT BUTTON ─── */
+  .btn-submit {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+
+  .btn-submit:hover { opacity: 0.88; }
+  .btn-submit:active { transform: scale(0.99); }
+
+  .btn-player { background: var(--player); color: #04341a; }
+  .btn-donor  { background: var(--donor);  color: #3a2600; }
+  .btn-fan    { background: var(--fan);    color: #fff; }
+
+  /* ─── SUCCESS STATE ─── */
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+
+  .success-screen.active { display: block; }
+
+  .success-icon {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 1.5rem;
+  }
+
+  .success-player { background: var(--player-dim); }
+  .success-donor  { background: var(--donor-dim); }
+  .success-fan    { background: var(--fan-dim); }
+
+  .success-screen h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.7rem;
+  }
+
+  .success-screen p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+
+  .btn-back {
+    margin-top: 2rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    padding: 0.65rem 1.5rem;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-back:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
+
+  /* required star */
+  .req { color: #e8445a; margin-left: 2px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <header>
+    <div class="logo-line">
+      
+      Diaspora Soccer Academy — The Paws 🐾 
+    
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Join <span>The<br>Team</span></h1>
+    <p>Choose how you want to be part of something bigger. Every role matters — on the pitch, behind it, or beside it.</p>
+  </section>
+
+  <!-- Category Cards -->
+  <section class="categories">
+
+    <div class="cat-card player" onclick="openForm('player')">
+      <div class="cat-icon">⚽</div>
+      <div class="cat-label">Player</div>
+      <div class="cat-desc">Step onto the pitch. Register as an active player and become part of a competitive team.</div>
+      <div class="cat-arrow">Register now →</div>
+    </div>
+
+    <div class="cat-card donor" onclick="openForm('donor')">
+      <div class="cat-icon">💛</div>
+      <div class="cat-label">Donor</div>
+      <div class="cat-desc">Fuel the mission. Your contribution keeps the game alive and growing for the next generation.</div>
+      <div class="cat-arrow">Support us →</div>
+    </div>
+
+    <div class="cat-card fan" onclick="openForm('fan')">
+      <div class="cat-icon">🔥</div>
+      <div class="cat-label">Fan</div>
+      <div class="cat-desc">Live the passion. Join the community, get updates, and show your love for the game.</div>
+      <div class="cat-arrow">Join the community →</div>
+    </div>
+
+  </section>
+
+</div><!-- /.page -->
+
+
+<!-- ─────────────────── PLAYER FORM ─────────────────── -->
+<div class="form-overlay" id="overlay-player">
+  <div class="form-card form-player">
+    <button class="form-close" onclick="closeForm('player')" aria-label="Close">✕</button>
+
+    <div id="form-content-player">
+      <div class="form-header">
+        <div class="form-badge badge-player">⚽ Player</div>
+        <h2>Player Registration</h2>
+        <p>Fill in your details and we'll get you on the roster.</p>
+      </div>
+
+      <form onsubmit="submitForm(event,'player')">
+        <p class="section-label">Personal Details</p>
+        <div class="field-grid">
+          <div class="field">
+            <label>Full Name <span class="req">*</span></label>
+            <input type="text" placeholder="e.g. Alex Kamau" required>
+          </div>
+          <div class="field">
+            <label>Age <span class="req">*</span></label>
+            <input type="number" min="5" max="80" placeholder="e.g. 22" required>
+          </div>
+          <div class="field">
+            <label>Email Address <span class="req">*</span></label>
+            <input type="email" placeholder="alex@email.com" required>
+          </div>
+          <div class="field">
+            <label>Phone Number <span class="req">*</span></label>
+            <input type="tel" placeholder="+254 700 000 000" required>
+          </div>
+          <div class="field span2">
+            <label>Location (City / Country) <span class="req">*</span></label>
+            <input type="text" placeholder="e.g. Nairobi, Kenya" required>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+        <p class="section-label">Playing Details</p>
+        <div class="field-grid">
+          <div class="field">
+            <label>Preferred Position <span class="req">*</span></label>
+            <select required>
+              <option value="" disabled selected>Select position</option>
+              <option>Goalkeeper</option>
+              <option>Defender</option>
+              <option>Midfielder</option>
+              <option>Forward / Striker</option>
+              <option>Winger</option>
+              <option>All-rounder</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Skill Level <span class="req">*</span></label>
+            <select required>
+              <option value="" disabled selected>Select level</option>
+              <option>Beginner</option>
+              <option>Intermediate</option>
+              <option>Advanced</option>
+              <option>Semi-Professional</option>
+              <option>Professional</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Years of Experience</label>
+            <input type="number" min="0" max="50" placeholder="e.g. 5">
+          </div>
+          <div class="field">
+            <label>Jersey Size</label>
+            <select>
+              <option value="" disabled selected>Select size</option>
+              <option>XS</option><option>S</option><option>M</option>
+              <option>L</option><option>XL</option><option>XXL</option>
+            </select>
+          </div>
+          <div class="field span2">
+            <label>Current Club / Team (if any)</label>
+            <input type="text" placeholder="e.g. Ongata Rovers FC">
+          </div>
+          <div class="field span2">
+            <label>Tell us about yourself</label>
+            <textarea placeholder="Any achievements, goals, or anything you'd like us to know…"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn-submit btn-player">Complete Registration →</button>
+      </form>
+    </div>
+
+    <!-- Success -->
+    <div class="success-screen" id="success-player">
+      <div class="success-icon success-player">⚽</div>
+      <h3>You're On The Team!</h3>
+      <p>Your player registration has been received.<br>We'll be in touch with next steps soon.</p>
+      <button class="btn-back" onclick="closeForm('player')">← Back to Join Us</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ─────────────────── DONOR FORM ─────────────────── -->
+<div class="form-overlay" id="overlay-donor">
+  <div class="form-card form-donor">
+    <button class="form-close" onclick="closeForm('donor')" aria-label="Close">✕</button>
+
+    <div id="form-content-donor">
+      <div class="form-header">
+        <div class="form-badge badge-donor">💛 Donor</div>
+        <h2>Support The Mission</h2>
+        <p>Your generosity makes the game possible for everyone.</p>
+      </div>
+
+      <form onsubmit="submitForm(event,'donor')">
+        <p class="section-label">Personal Details</p>
+        <div class="field-grid">
+          <div class="field">
+            <label>Full Name <span class="req">*</span></label>
+            <input type="text" placeholder="e.g. Sarah Wanjiku" required>
+          </div>
+          <div class="field">
+            <label>Age <span class="req">*</span></label>
+            <input type="number" min="18" max="100" placeholder="e.g. 35" required>
+          </div>
+          <div class="field">
+            <label>Email Address <span class="req">*</span></label>
+            <input type="email" placeholder="sarah@email.com" required>
+          </div>
+          <div class="field">
+            <label>Phone Number <span class="req">*</span></label>
+            <input type="tel" placeholder="+254 700 000 000" required>
+          </div>
+          <div class="field span2">
+            <label>Location (City / Country) <span class="req">*</span></label>
+            <input type="text" placeholder="e.g. Nairobi, Kenya" required>
+          </div>
+          <div class="field span2">
+            <label>Organisation / Company (optional)</label>
+            <input type="text" placeholder="e.g. Acme Holdings Ltd">
+          </div>
+        </div>
+
+        <hr class="section-divider">
+        <p class="section-label">Contribution Details</p>
+        <div class="field-grid">
+          <div class="field">
+            <label>Donation Type <span class="req">*</span></label>
+            <select required>
+              <option value="" disabled selected>Select type</option>
+              <option>One-Time Donation</option>
+              <option>Monthly Contribution</option>
+              <option>Annual Sponsorship</option>
+              <option>Equipment / In-Kind</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Preferred Amount Range</label>
+            <select>
+              <option value="" disabled selected>Select range</option>
+              <option>Under KES 5,000</option>
+              <option>KES 5,000 – 20,000</option>
+              <option>KES 20,000 – 100,000</option>
+              <option>KES 100,000 – 500,000</option>
+              <option>Above KES 500,000</option>
+              <option>Prefer to discuss</option>
+            </select>
+          </div>
+          <div class="field span2">
+            <label>Preferred Cause / Area of Impact</label>
+            <select>
+              <option value="" disabled selected>Select cause</option>
+              <option>Youth Development</option>
+              <option>Women's Football</option>
+              <option>Infrastructure & Equipment</option>
+              <option>Player Scholarships</option>
+              <option>General Fund</option>
+              <option>Any — where most needed</option>
+            </select>
+          </div>
+          <div class="field span2">
+            <label>Message or Special Instructions</label>
+            <textarea placeholder="Any specific wishes for how your donation is used…"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn-submit btn-donor">Submit Donation Interest →</button>
+      </form>
+    </div>
+
+    <div class="success-screen" id="success-donor">
+      <div class="success-icon success-donor">💛</div>
+      <h3>Thank You For Giving!</h3>
+      <p>Your interest has been noted. Our team will reach out<br>shortly to finalise the details of your contribution.</p>
+      <button class="btn-back" onclick="closeForm('donor')">← Back to Join Us</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ─────────────────── FAN FORM ─────────────────── -->
+<div class="form-overlay" id="overlay-fan">
+  <div class="form-card form-fan">
+    <button class="form-close" onclick="closeForm('fan')" aria-label="Close">✕</button>
+
+    <div id="form-content-fan">
+      <div class="form-header">
+        <div class="form-badge badge-fan">🔥 Fan</div>
+        <h2>Join The Community</h2>
+        <p>Be the loudest voice in the stands — and the first to know everything.</p>
+      </div>
+
+      <form onsubmit="submitForm(event,'fan')">
+        <p class="section-label">Your Details</p>
+        <div class="field-grid">
+          <div class="field">
+            <label>Full Name <span class="req">*</span></label>
+            <input type="text" placeholder="e.g. Brian Omondi" required>
+          </div>
+          <div class="field">
+            <label>Age <span class="req">*</span></label>
+            <input type="number" min="5" max="100" placeholder="e.g. 28" required>
+          </div>
+          <div class="field">
+            <label>Email Address <span class="req">*</span></label>
+            <input type="email" placeholder="brian@email.com" required>
+          </div>
+          <div class="field">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+254 700 000 000">
+          </div>
+          <div class="field span2">
+            <label>Location (City / Country) <span class="req">*</span></label>
+            <input type="text" placeholder="e.g. Nairobi, Kenya" required>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+        <p class="section-label">Fan Profile</p>
+        <div class="field-grid">
+          <div class="field">
+            <label>Favourite Team / Player</label>
+            <input type="text" placeholder="e.g. The Lions, or Player Name">
+          </div>
+          <div class="field">
+            <label>Social Media Handle</label>
+            <input type="text" placeholder="@yourhandle">
+          </div>
+          <div class="field">
+            <label>How did you hear about us? <span class="req">*</span></label>
+            <select required>
+              <option value="" disabled selected>Select one</option>
+              <option>Social Media</option>
+              <option>Friend or Family</option>
+              <option>Event / Match</option>
+              <option>Website</option>
+              <option>TV / Radio</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Interested in volunteering?</label>
+            <select>
+              <option value="" disabled selected>Select one</option>
+              <option>Yes — definitely!</option>
+              <option>Maybe, tell me more</option>
+              <option>Not right now</option>
+            </select>
+          </div>
+          <div class="field span2">
+            <label>What do you love most about the game?</label>
+            <textarea placeholder="Tell us what drives your passion…"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn-submit btn-fan">Join The Fanbase →</button>
+      </form>
+    </div>
+
+    <div class="success-screen" id="success-fan">
+      <div class="success-icon success-fan">🔥</div>
+      <h3>Welcome To The Fanbase!</h3>
+      <p>You're officially part of the community. Watch your inbox<br>for news, match updates, and exclusive content.</p>
+      <button class="btn-back" onclick="closeForm('fan')">← Back to Join Us</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ─────────────────────────────
+  // FORM DATA ENDPOINT (Formspree)
+  // ─────────────────────────────
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/mgoqdawn";
+
+  function openForm(type) {
+    document.getElementById('overlay-' + type).classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeForm(type) {
+    document.getElementById('overlay-' + type).classList.remove('active');
+    document.body.style.overflow = '';
+
+    const content = document.getElementById('form-content-' + type);
+    const success = document.getElementById('success-' + type);
+
+    if (content) content.style.display = 'block';
+    if (success) success.classList.remove('active');
+  }
+
+  function setButtonState(type, loading) {
+    const btn = document.querySelector('#overlay-' + type + ' .btn-submit');
+    btn.disabled = loading;
+
+    btn.textContent = loading ? 'Sending…' : {
+      player: 'Complete Registration →',
+      donor:  'Submit Donation Interest →',
+      fan:    'Join The Fanbase →'
+    }[type];
+  }
+
+  function collectFormData(type) {
+    const inputs = document.querySelectorAll(
+      '#overlay-' + type + ' form input, #overlay-' + type + ' form select, #overlay-' + type + ' form textarea'
+    );
+
+    const labels = document.querySelectorAll('#overlay-' + type + ' form label');
+
+    let data = `New ${type.toUpperCase()} Registration\n\n`;
+
+    inputs.forEach((input, i) => {
+      const label = labels[i]
+        ? labels[i].textContent.replace('*','').trim()
+        : input.placeholder || 'Field';
+
+      if (input.value) {
+        data += `${label}: ${input.value}\n`;
+      }
+    });
+
+    return data;
+  }
+
+  function submitForm(event, type) {
+    event.preventDefault();
+
+    setButtonState(type, true);
+
+    const form = document.querySelector('#overlay-' + type + ' form');
+    const formData = new FormData(form);
+
+    // add extra structured message
+    formData.append("type", type);
+    formData.append("summary", collectFormData(type));
+
+    fetch(FORMSPREE_ENDPOINT, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json"
+      }
+    })
+    .then(async (res) => {
+      setButtonState(type, false);
+
+      if (res.ok) {
+        document.getElementById('form-content-' + type).style.display = 'none';
+        document.getElementById('success-' + type).classList.add('active');
+      } else {
+        alert("Submission failed. Please try again.");
+      }
+    })
+    .catch(() => {
+      setButtonState(type, false);
+      alert("Network error. Please try again.");
+    });
+  }
+
+  // Close on backdrop click
+  document.querySelectorAll('.form-overlay').forEach(overlay => {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === this) closeForm(this.id.replace('overlay-', ''));
+    });
+  });
+
+  // Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.form-overlay.active').forEach(overlay => {
+        closeForm(overlay.id.replace('overlay-', ''));
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
